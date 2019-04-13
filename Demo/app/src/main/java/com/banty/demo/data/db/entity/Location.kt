@@ -1,4 +1,4 @@
-package com.banty.demo.data.models
+package com.banty.demo.data.db.entity
 
 import com.google.gson.annotations.SerializedName
 

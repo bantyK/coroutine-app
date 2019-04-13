@@ -1,4 +1,4 @@
-package com.banty.demo.data.models
+package com.banty.demo.data.db.entity
 
 data class Condition(
         val code: Int,
