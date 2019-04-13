@@ -8,6 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.banty.demo.R
+import com.banty.demo.data.retrofit.WeatherResponseApi
+import kotlinx.android.synthetic.main.current_weather_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class CurrentWeatherFragment : Fragment() {
 
@@ -26,6 +31,13 @@ class CurrentWeatherFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CurrentWeatherViewModel::class.java)
         // TODO: Use the ViewModel
+
+
+        val apiService = WeatherResponseApi()
+        GlobalScope.launch(Dispatchers.Main) {
+            val currentWeatherResponse = apiService.getCurrentWeather("pune").await()
+            weather_text.text = currentWeatherResponse.currentWeatherEntry.toString()
+        }
     }
 
 }
