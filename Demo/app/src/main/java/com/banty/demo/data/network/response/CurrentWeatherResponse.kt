@@ -1,4 +1,4 @@
-package com.banty.demo.data.response
+package com.banty.demo.data.network.response
 
 import com.banty.demo.data.db.entity.CurrentWeatherEntry
 import com.banty.demo.data.db.entity.Location
