@@ -25,7 +25,7 @@ class WeatherRepositoryImpl(
 
     private suspend fun fetchWeatherDataFromNetwork() {
         if (hasCacheExpired(ZonedDateTime.now().minusHours(1))) {
-            weatherNetworkDataSource.fetchWeatherDataFromNetwork("ranchi")
+            weatherNetworkDataSource.fetchWeatherDataFromNetwork("Pune")
         }
     }
 
