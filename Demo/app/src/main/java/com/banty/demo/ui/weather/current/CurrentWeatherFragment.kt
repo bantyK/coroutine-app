@@ -1,5 +1,6 @@
 package com.banty.demo.ui.weather.current
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 
+@SuppressLint("SetTextI18n")
 class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
 
     override val kodein by closestKodein()
@@ -42,12 +44,12 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         val weather = viewModel.weather.await()
         weather.observe(this@CurrentWeatherFragment, Observer { weather ->
             if (weather == null) return@Observer
-            group_loading.visibility = View.GONE
             updateUI(weather)
         })
     }
 
     private fun updateUI(weather: StandardWeatherEntry) {
+        group_loading.visibility = View.GONE
         updateLocation("Pune")
         updateDateToToday()
         updateTemperature(weather.temperature, weather.feelsLikeTemperature)

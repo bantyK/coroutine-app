@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Weather Location">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:disableDependentsState="true"
+            android:key="USE_DEVICE_LOCATION"
+            android:summary="Allow the app to get your location"
+            android:title="Use Device Location" />
+
+
+        <EditTextPreference
+            android:defaultValue="Pune"
+            android:key="CUSTOM_LOCATION"
+            android:summary="The location for which the weather is fetched"
+            android:title="Location"
+            android:dependency="USE_DEVICE_LOCATION"
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="units">
+
+        <ListPreference
+            android:key="UNIT_SYSTEM"
+            android:title="Unit System"
+            android:summary="%s"
+            android:defaultValue="METRIC"
+            android:entries="@array/unitSystemEntries"
+            android:entryValues="@array/unitSystemValues" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

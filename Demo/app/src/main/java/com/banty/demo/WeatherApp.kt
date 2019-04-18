@@ -5,6 +5,8 @@ import com.banty.demo.data.db.WeatherDatabase
 import com.banty.demo.data.network.api.WeatherApiService
 import com.banty.demo.data.network.interceptor.ConnectivityInterceptor
 import com.banty.demo.data.network.interceptor.ConnectivityInterceptorImpl
+import com.banty.demo.data.provider.UnitProvider
+import com.banty.demo.data.provider.UnitProviderImpl
 import com.banty.demo.data.repository.WeatherNetworkDataSource
 import com.banty.demo.data.repository.WeatherNetworkDataSourceImpl
 import com.banty.demo.data.repository.WeatherRepository
@@ -37,7 +39,8 @@ class WeatherApp : Application(), KodeinAware {
         bind() from singleton { WeatherApiService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
         bind<WeatherRepository>() with singleton { WeatherRepositoryImpl(instance(), instance()) }
-        bind() from provider { CurrentWeatherViewModelFactory(instance()) }
+        bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
+        bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
     }
 
 }
